@@ -1,0 +1,25 @@
+.SideBarContainer {
+  position: relative;
+  /* display: block; */
+  min-height: 700px;
+  width: 100px;
+  background-color: black;
+  border-top: none;
+}
+
+.activityContainer {
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sideBarText {
+  white-space: nowrap;
+  font-size:10px;
+  position: absolute;
+  left: -8px;
+  bottom: 12%;
+  color: white;
+  transform: rotate(-90deg);
+}

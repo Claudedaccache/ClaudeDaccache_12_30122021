@@ -1,0 +1,11 @@
+.activityContainer{
+  background-color: white;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+}

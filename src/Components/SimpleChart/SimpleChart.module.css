@@ -1,0 +1,21 @@
+.lineChartContainer{
+  background-color: #f84747;
+position: relative;
+}
+
+.toolTip{
+  background-color: white;
+}
+.toolTipText{
+  color: black;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+
+}
+
+.legendContainer{
+width: 10rem;
+position: absolute;
+
+}
+
