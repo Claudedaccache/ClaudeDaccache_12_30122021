@@ -89,7 +89,7 @@ class RadarCharts extends PureComponent {
 
               <Radar
                 name="Mike"
-                dataKey="A"
+                dataKey="B"
                 stroke="#FF0101B2"
                 fill="#FF0101B2"
                 fillOpacity={1}

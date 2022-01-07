@@ -18,11 +18,14 @@ a {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
+  margin: 0 0 4rem 4rem;
 }
 .BodyContentWithSideBar {
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 100%;
 }
 
 .allBobyContent {

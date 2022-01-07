@@ -93,12 +93,12 @@ const data = [
 ];
 
 class ActivityBarChart extends PureComponent {
-  CustomTooltip = ({ active, payload, label }) => {
+  CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
         <div className={styles.toolTip}>
           <p>{`${payload[0].value}kg`}</p>
-          <p>{`${label}Kcal`}</p>
+          <p>{`${payload[1].value}Kcal`}</p>
         </div>
       );
     }
@@ -107,9 +107,8 @@ class ActivityBarChart extends PureComponent {
   };
 
   customLegend = (props) => {
-
-    // let weightColor = this.props.weightColor
-    // let caloriesColor = this.props.caloriesColor
+    let weightColor = props.weightColor;
+    let caloriesColor = props.caloriesColor;
     return (
       <div className={`section-title ${styles.barChartTitle}`}>
         <div>
@@ -119,15 +118,19 @@ class ActivityBarChart extends PureComponent {
         <div className="d-flex flex-row">
           <div className="d-flex flex-row justify-content-center align-items-baseline">
             {" "}
-            <span className={styles.legendDot} style={{backgroundColor: "#282D30"}}></span>
+            <span
+              className={styles.legendDot}
+              style={{ backgroundColor: weightColor }}
+            ></span>
             <p className={styles.legendText}>{"Poids (kg)"}</p>
           </div>
           <div className="d-flex flex-row justify-content-center align-items-baseline ">
             {" "}
-            <span className={styles.legendDot} style={{backgroundColor: "#E60000"}}></span>
-            <p className={styles.legendText}>
-              {"Calories brûlées (kCal)"}
-            </p>
+            <span
+              className={styles.legendDot}
+              style={{ backgroundColor: caloriesColor }}
+            ></span>
+            <p className={styles.legendText}>{"Calories brûlées (kCal)"}</p>
           </div>
         </div>
       </div>
@@ -137,10 +140,6 @@ class ActivityBarChart extends PureComponent {
   render() {
     return (
       <div className={`${styles.barChartContainer}`}>
-        {/* // <h3 >
-        //   Activité quotidienne
-        // </h3> */}
-
         <ResponsiveContainer width="100%" height={300}>
           <BarChart
             width={500}
@@ -154,33 +153,26 @@ class ActivityBarChart extends PureComponent {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
-            <XAxis />
+            <XAxis tickLine={false} tickCount={10} />
             <YAxis
-              dataKey={"kilogram"}
               orientation="right"
               axisLine={false}
               tickLine={false}
+              tickCount={3}
             />
             <Tooltip content={this.CustomTooltip} />
             <Legend
               verticalAlign="top"
-              height={36}
-              layout="horizontal"
-              align="right"
-              iconType={"circle"}
-              iconSize={10}
-              content={this.customLegend}
+              content={this.customLegend(this.props)}
             />
 
             <Bar
-              // name="  Poids (kg)"
               dataKey="kilogram"
               fill={this.props.weightColor}
               barSize={12}
               radius={[15, 15, 0, 0]}
             />
             <Bar
-              // name="  Calories brûlées (kCal)"
               dataKey="calories"
               fill={this.props.caloriesColor}
               barSize={12}

@@ -11,7 +11,6 @@ import styles from "./PieChart.module.css";
 
 const data = [
   { name: "Score", value: 0.12 },
-  { name: "empty", value: 0.88 },
 ];
 
 class PieCharts extends PureComponent {
@@ -19,9 +18,8 @@ class PieCharts extends PureComponent {
     innerText: 0,
   };
 
-  CustomLabel = ({ viewBox, innerText = 12 }) => {
+  CustomLabel = ({ viewBox, innerText = parseInt(`${data[0].value * 100}`) }) => {
     const { cx, cy } = viewBox;
-
     return (
       <React.Fragment>
         <text x={cx - 15} y={cy - 5}>
@@ -33,7 +31,7 @@ class PieCharts extends PureComponent {
               fontFamily: "Roboto",
             }}
           >
-            {innerText}%
+            {`${innerText}`}%
           </tspan>
         </text>
         <text x={cx - 55} y={cy + 15}>
@@ -43,7 +41,7 @@ class PieCharts extends PureComponent {
               fill: "black",
               opacity: "0.6",
               fontFamily: "Roboto",
-              }}
+            }}
           >
             de votre objective{" "}
           </tspan>
@@ -74,12 +72,14 @@ class PieCharts extends PureComponent {
               innerRadius={70}
               outerRadius={80}
               fill="#FF0000"
+              startAngle={90}
             >
               {data.map((entry, index) => {
+                console.log(entry);
                 if (index === 1) {
-                  return <Cell key={entry.value} fill="#f3f6f9" />
+                  return <Cell key={`cell-${index}`} fill="#f3f6f9" />;
                 }
-                return <Cell key={entry.value} fill="#FF0000" />;
+                return <Cell key={`cell-${index}`} fill="#FF0000" />;
               })}
 
               <Label content={this.CustomLabel} position="center" />

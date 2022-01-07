@@ -19,7 +19,7 @@
 
 .toolTip {
   background-color: #e60000;
-  padding: 1rem 1rem;
+  padding: 0.6rem 0.3rem !important;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
