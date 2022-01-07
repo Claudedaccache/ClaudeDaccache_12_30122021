@@ -9,3 +9,7 @@
   margin-bottom: 1.5rem;
   border-radius: 6px;
 }
+
+.activityContainer:hover{
+  box-shadow: 6px 8px  #E60000 ;
+}

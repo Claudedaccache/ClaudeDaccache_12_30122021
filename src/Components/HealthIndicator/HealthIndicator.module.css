@@ -1,17 +1,15 @@
 .HealthIndicatorContainer {
-  width: 15rem;
-  height: 5rem;
+  width: 18rem;
+  height: 10rem;
   background-color: rgb(250, 250, 250);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  margin: 1rem;
   border-radius: 6px;
 }
 
 .iconContainer{
-  /* background-color: rgb(204, 131, 131); */
   width: 3.5rem;
   height: 3.5rem;
   display: flex;

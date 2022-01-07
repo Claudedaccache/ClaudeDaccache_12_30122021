@@ -89,11 +89,10 @@ const data = [
     day: "2020-07-07",
     kilogram: 69,
     calories: 390,
-  }
+  },
 ];
 
 class ActivityBarChart extends PureComponent {
-
   CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
@@ -107,73 +106,88 @@ class ActivityBarChart extends PureComponent {
     return null;
   };
 
-  // CustomLegend = () => {
-  //     return (
-  //       <div>
-  //         <p>{"Activité quotidienne"}</p>
-  //       </div>
-  //     );
-  //   };
+  customLegend = (props) => {
 
-// ColorfulLegendText = (value, entry) => {
-//       const { color } = entry;
-      
-//       return <span style={{ color }}>{value}</span>;
-//     }
+    // let weightColor = this.props.weightColor
+    // let caloriesColor = this.props.caloriesColor
+    return (
+      <div className={`section-title ${styles.barChartTitle}`}>
+        <div>
+          {" "}
+          <p className={styles.legendTitle}>{"Activité quotidienne"}</p>
+        </div>
+        <div className="d-flex flex-row">
+          <div className="d-flex flex-row justify-content-center align-items-baseline">
+            {" "}
+            <span className={styles.legendDot} style={{backgroundColor: "#282D30"}}></span>
+            <p className={styles.legendText}>{"Poids (kg)"}</p>
+          </div>
+          <div className="d-flex flex-row justify-content-center align-items-baseline ">
+            {" "}
+            <span className={styles.legendDot} style={{backgroundColor: "#E60000"}}></span>
+            <p className={styles.legendText}>
+              {"Calories brûlées (kCal)"}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   render() {
     return (
-      <div className="row">
-        <div className={`section col-md-6 ${styles.barChartContainer}`}>
-          <h3 className={`section-title ${styles.barChartTitle}`}>
-            Activité quotidienne
-          </h3>
+      <div className={`${styles.barChartContainer}`}>
+        {/* // <h3 >
+        //   Activité quotidienne
+        // </h3> */}
 
-          <ResponsiveContainer width="100%" aspect={3}>
-            <BarChart
-              width={500}
-              height={300}
-              data={data}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" vertical={false} />
-              <XAxis/>
-              <YAxis dataKey={"kilogram"} orientation="right"  axisLine={false} tickLine={false}/>
-              <Tooltip content={this.CustomTooltip} />
-              <Legend
-                verticalAlign="top"
-                height={36}
-                layout="horizontal"
-                align="right"
-                iconType={"circle"}
-                iconSize={10}
-                
-                />
-          
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart
+            width={500}
+            height={300}
+            data={data}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+            <XAxis />
+            <YAxis
+              dataKey={"kilogram"}
+              orientation="right"
+              axisLine={false}
+              tickLine={false}
+            />
+            <Tooltip content={this.CustomTooltip} />
+            <Legend
+              verticalAlign="top"
+              height={36}
+              layout="horizontal"
+              align="right"
+              iconType={"circle"}
+              iconSize={10}
+              content={this.customLegend}
+            />
 
-              <Bar
-                name="  Poids (kg)"
-                dataKey="kilogram"
-                fill="#282D30"
-                barSize={12}
-                radius={[15, 15, 0, 0]}
-               
-              />
-              {/* <Bar
-                name="  Calories brûlées (kCal)"
-                dataKey="calories"
-                fill="#E60000"
-                barSize={12}
-                radius={[15, 15, 0, 0]}
-              /> */}
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+            <Bar
+              // name="  Poids (kg)"
+              dataKey="kilogram"
+              fill={this.props.weightColor}
+              barSize={12}
+              radius={[15, 15, 0, 0]}
+            />
+            <Bar
+              // name="  Calories brûlées (kCal)"
+              dataKey="calories"
+              fill={this.props.caloriesColor}
+              barSize={12}
+              radius={[15, 15, 0, 0]}
+            />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
     );
   }

@@ -76,10 +76,9 @@ class RadarCharts extends PureComponent {
 
   render() {
     return (
-      <div className="row">
-        <div className={`section col-md-6 ${styles.radarChartContainer}`}>
-          <ResponsiveContainer width="100%" aspect={3}>
-            <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
+        <div className={styles.radarChartContainer}>
+          <ResponsiveContainer width="100%" >
+            <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
               <PolarGrid
                 gridType="polygon"
                 polarRadius={[20, 40, 60, 80, 100]}
@@ -98,7 +97,6 @@ class RadarCharts extends PureComponent {
             </RadarChart>
           </ResponsiveContainer>
         </div>
-      </div>
     );
   }
 }

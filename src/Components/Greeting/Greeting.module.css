@@ -1,7 +1,7 @@
 .greetingContainer{
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
+  margin: 5rem;
   
 }
 .userGreeting{
@@ -10,6 +10,7 @@
   font-size: 48px;
   line-height: 24px;
   color: #000000;
+  margin-bottom: 2.2rem;
 }
 
 .userName{
@@ -18,7 +19,7 @@
 
 .userEncouragingMessage{
   font-style: normal;
-  font-weight: normal;
+  font-weight:500;
   font-size: 18px;
   line-height: 24px;
   color: #000000;

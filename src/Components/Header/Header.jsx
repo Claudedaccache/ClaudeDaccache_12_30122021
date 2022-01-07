@@ -8,7 +8,7 @@ class Header extends React.Component {
         <div className={styles.contentContainer}>
           <div>
             {" "}
-            <Logo color="E60000" />
+            <Logo color="#E60000" />
           </div>
           <div className={styles.navItems}>
             <div className="navItem">Accueil</div>

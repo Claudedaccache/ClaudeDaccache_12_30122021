@@ -47,12 +47,7 @@ const data = [
     pv: 3800,
     amt: 2500,
   },
-  {
-    name: "G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
+
 ];
 
 class SimpleCharts extends PureComponent {
@@ -69,7 +64,6 @@ class SimpleCharts extends PureComponent {
   };
 
   customCursor = (props) => {
-    console.log("hello");
     const { points, width, height, stroke } = props;
     const { x, y } = points[0];
     const { x1, y1 } = points[1];
@@ -95,9 +89,9 @@ class SimpleCharts extends PureComponent {
 
   render() {
     return (
-      <div className="row">
-        <div className={`section col-md-6 ${styles.lineChartContainer}`}>
-          <ResponsiveContainer width="100%" aspect={3}>
+      // <div className="row">
+        <div className={styles.lineChartContainer}>
+          <ResponsiveContainer  width="100%">
             <LineChart
               width={500}
               height={300}
@@ -130,7 +124,7 @@ class SimpleCharts extends PureComponent {
                 iconSize={0}
                 wrapperStyle={{
                   top: 20,
-                  left: -280,
+                  left: -110,
                   opacity: "0.6",
                   color: "white",
                 }}
@@ -145,8 +139,8 @@ class SimpleCharts extends PureComponent {
               />
             </LineChart>
           </ResponsiveContainer>
-        </div>
-      </div>
+       </div>
+      // </div>
     );
   }
 }

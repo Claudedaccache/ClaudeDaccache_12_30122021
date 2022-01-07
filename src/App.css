@@ -13,3 +13,47 @@ h2,
 a {
   font-family: "Montserrat", sans-serif;
 }
+
+.BodyContentWithoutSideBar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.BodyContentWithSideBar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.allBobyContent {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.allChartsContent {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  height: 100%;
+}
+
+.allLowerCharts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.chartItem {
+  height: 100%;
+  width: 30%;
+}
+
+.healthIndicationMainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2rem;
+  width: 25%;
+}
