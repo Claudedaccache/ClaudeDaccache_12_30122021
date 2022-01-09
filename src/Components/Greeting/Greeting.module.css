@@ -1,26 +1,36 @@
-.greetingContainer{
+.greetingContainer {
   display: flex;
   flex-direction: column;
   margin: 5rem 5rem 2rem 1rem;
-  
 }
-.userGreeting{
+.userGreeting {
   font-style: normal;
   font-weight: 500;
-  font-size: 48px;
+  font-size: 30px;
   line-height: 24px;
   color: #000000;
   margin-bottom: 2.2rem;
 }
 
-.userName{
-  color: #FF0000;
+.userName {
+  color: #ff0000;
+  font-family: "Roboto", sans-serif;
 }
 
-.userEncouragingMessage{
+.userEncouragingMessage {
   font-style: normal;
-  font-weight:500;
-  font-size: 18px;
+  font-weight: 500;
+  font-size: 16px;
   line-height: 24px;
   color: #000000;
+}
+
+@media screen and (min-width: 1400px) {
+  .userGreeting {
+    font-size: 48px;
+  }
+
+  .userEncouragingMessage {
+    font-size: 18px;
+  }
 }

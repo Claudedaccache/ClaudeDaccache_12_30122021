@@ -7,34 +7,34 @@ import HamburgerIcon from "../Images/HamburgerIcon";
 
 class HealthIndicators extends React.Component {
   render() {
+    let indicatorData = this.props.userHealthData.keyData;
     return (
       <>
-          <HealthIndicator
-                    icon={FireIcon}
-                    color="#ffe0e0"
-                    indicatorNumber="1,930kCal"
-                    indicatorType="Calories"
-                  />
-                  <HealthIndicator
-                    icon={MeatIcon}
-                    color="#d3edff"
-                    indicatorNumber="155g"
-                    indicatorType="Proteines"
-                  />
-                  <HealthIndicator
-                    icon={AppleIcon}
-                    color="#fdf7db  "
-                    indicatorNumber="290g"
-                    indicatorType="Glucides"
-                  />
-                  <HealthIndicator
-                    icon={HamburgerIcon}
-                    color="#FD51811A"
-                    indicatorNumber="50g"
-                    indicatorType="Lipides"
-                  /></>
- 
-    
+        <HealthIndicator
+          icon={FireIcon}
+          color="#ffe0e0"
+          indicatorNumber={`${indicatorData.calorieCount}kCal`}
+          indicatorType="Calories"
+        />
+        <HealthIndicator
+          icon={MeatIcon}
+          color="#d3edff"
+          indicatorNumber={`${indicatorData.proteinCount}g`}
+          indicatorType="Proteines"
+        />
+        <HealthIndicator
+          icon={AppleIcon}
+          color="#fdf7db  "
+          indicatorNumber={`${indicatorData.carbohydrateCount}g`}
+          indicatorType="Glucides"
+        />
+        <HealthIndicator
+          icon={HamburgerIcon}
+          color="#FD51811A"
+          indicatorNumber={`${indicatorData.lipidCount}g`}
+          indicatorType="Lipides"
+        />
+      </>
     );
   }
 }

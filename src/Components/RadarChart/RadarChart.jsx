@@ -8,45 +8,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  {
-    subject: "Math",
-    A: 120,
-    B: 110,
-    fullMark: 150,
-  },
-  {
-    subject: "Chinese",
-    A: 98,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: "English",
-    A: 86,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: "Geography",
-    A: 99,
-    B: 100,
-    fullMark: 150,
-  },
-  {
-    subject: "Physics",
-    A: 85,
-    B: 90,
-    fullMark: 150,
-  },
-  {
-    subject: "History",
-    A: 65,
-    B: 85,
-    fullMark: 150,
-  },
-];
-
 class RadarCharts extends PureComponent {
   customTick = ({ payload, x, y, textAnchor, stroke, radius }) => {
     return (
@@ -67,7 +28,9 @@ class RadarCharts extends PureComponent {
               fill: "white",
             }}
           >
-            {`${payload.value}`}
+            {"hello"}
+            {/* {this.props.data.performanceData.map((x) => x.kind)} */}
+            {/* {`${payload.value}`} */}
           </tspan>
         </text>
       </g>
@@ -76,27 +39,32 @@ class RadarCharts extends PureComponent {
 
   render() {
     return (
-        <div className={styles.radarChartContainer}>
-          <ResponsiveContainer width="100%" >
-            <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
-              <PolarGrid
-                gridType="polygon"
-                polarRadius={[20, 40, 60, 80, 100]}
-                stroke="#fff"
-                radialLines={false}
-              />
-              <PolarAngleAxis dataKey="subject" tick={this.customTick} />
+      <div className={styles.radarChartContainer}>
+        <ResponsiveContainer width="100%">
+          <RadarChart
+            cx="50%"
+            cy="50%"
+            outerRadius="70%"
+            data={this.props.data.performanceData}
+          >
+            <PolarGrid
+              gridType="polygon"
+              polarRadius={[10, 20, 40, 60, 80]}
+              stroke="#fff"
+              radialLines={false}
+              dataKey={"value"}
+            />
+            <PolarAngleAxis tick={this.customTick} />
 
-              <Radar
-                name="Mike"
-                dataKey="B"
-                stroke="#FF0101B2"
-                fill="#FF0101B2"
-                fillOpacity={1}
-              />
-            </RadarChart>
-          </ResponsiveContainer>
-        </div>
+            <Radar
+              dataKey="value"
+              stroke="#FF0101B2"
+              fill="#FF0101B2"
+              fillOpacity={1}
+            />
+          </RadarChart>
+        </ResponsiveContainer>
+      </div>
     );
   }
 }

@@ -17,9 +17,6 @@
 }
 
 .navItems > div:hover {
-  text-decoration: underline;
-  text-decoration-color: "#E60000";
-  text-underline-offset: 5px;
-transform: scale(1.2);
+  transform: scale(1.2);
   color: #E60000;
 }

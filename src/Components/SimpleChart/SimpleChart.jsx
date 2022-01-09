@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import styles from "./SimpleChart.module.css";
-import { DefaultTooltipContent } from "recharts/lib/component/DefaultTooltipContent";
 import {
   LineChart,
   Line,
@@ -12,44 +11,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  {
-    name: "A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-];
 
 class SimpleCharts extends PureComponent {
   customTooltip = ({ active, payload }) => {
@@ -63,6 +24,18 @@ class SimpleCharts extends PureComponent {
 
     return null;
   };
+
+
+
+
+
+
+
+
+
+
+
+
 
   // customCursor = (props) => {
   // console.log(props);
@@ -81,10 +54,11 @@ class SimpleCharts extends PureComponent {
   //   />
   // );
   // };
-  legendText = (text) => {
+
+  customLegend = () => {
     return (
       <div className={styles.legendContainer}>
-        <p className={styles.legendText}>{text}</p>
+        <p className={styles.legendText}>{"Durée moyenne des sessions"}</p>
       </div>
     );
   };
@@ -96,7 +70,7 @@ class SimpleCharts extends PureComponent {
           <LineChart
             width={500}
             height={300}
-            data={data}
+            data={this.props.data}
             margin={{
               top: 5,
               right: 30,
@@ -112,28 +86,32 @@ class SimpleCharts extends PureComponent {
               </linearGradient>
             </defs>
             <XAxis
-              dataKey="name"
+              dataKey="day"
               tickLine={false}
               axisLine={false}
               tick={{ fill: "white", opacity: "0.6" }}
             />
-            <Tooltip content={this.customTooltip}
-             cursor={this.customCursor} 
-             />
+            <Tooltip
+              content={this.customTooltip}
+              //  cursor={this.customCursor}
+            />
             <Legend
               iconSize={0}
-              wrapperStyle={{
-                top: 20,
-                left: -110,
-                opacity: "0.6",
-                color: "white",
-              }}
+              verticalAlign="insideTopLeft"
+              content={this.customLegend}
+              
+              // wrapperStyle={{
+              //   top: 20,
+              //   left: -110,
+              //   opacity: "0.6",
+              //   color: "white",
+              // }}
             />
             <Line
-              name={this.legendText("Durée moyenne des sessions")}
+              // name={this.legendText()}
               type="monotone"
-              dataKey="uv"
-              strokeWidth={2}
+              dataKey="sessionLength"
+              strokeWidth={3}
               stroke="url(#linear)"
               dot={false}
             />
