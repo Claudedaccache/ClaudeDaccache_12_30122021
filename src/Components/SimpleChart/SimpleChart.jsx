@@ -11,7 +11,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-
 class SimpleCharts extends PureComponent {
   customTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -24,18 +23,6 @@ class SimpleCharts extends PureComponent {
 
     return null;
   };
-
-
-
-
-
-
-
-
-
-
-
-
 
   // customCursor = (props) => {
   // console.log(props);
@@ -54,6 +41,43 @@ class SimpleCharts extends PureComponent {
   //   />
   // );
   // };
+
+  customTicks = (props) => {
+    const { x, y, stroke, orientation, width, height, type, textAnchor } =
+      props;
+    const days = ["L", "M", "M", "J", "V", "S", "D"];
+    for (let i = 0; i < days.length; i++) {
+      if (props.index == i) {
+        return (
+          <g className="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis">
+            <text
+              orientation={orientation}
+              width={width}
+              height={height}
+              type={type}
+              x={x}
+              y={y}
+              stroke={stroke}
+              className="recharts-text recharts-cartesian-axis-tick-value"
+              textAnchor={textAnchor}
+            >
+              <tspan
+                x={x}
+                dy="0.71em"
+                style={{
+                  fontSize: "0.8rem",
+                  fill: "white",
+                  opacity: "0.6",
+                }}
+              >
+                {days[i]}
+              </tspan>
+            </text>
+          </g>
+        );
+      }
+    }
+  };
 
   customLegend = () => {
     return (
@@ -89,7 +113,8 @@ class SimpleCharts extends PureComponent {
               dataKey="day"
               tickLine={false}
               axisLine={false}
-              tick={{ fill: "white", opacity: "0.6" }}
+              // tick={{ fill: "white", opacity: "0.6" }}
+              tick={this.customTicks}
             />
             <Tooltip
               content={this.customTooltip}
@@ -99,16 +124,8 @@ class SimpleCharts extends PureComponent {
               iconSize={0}
               verticalAlign="insideTopLeft"
               content={this.customLegend}
-              
-              // wrapperStyle={{
-              //   top: 20,
-              //   left: -110,
-              //   opacity: "0.6",
-              //   color: "white",
-              // }}
             />
             <Line
-              // name={this.legendText()}
               type="monotone"
               dataKey="sessionLength"
               strokeWidth={3}

@@ -9,32 +9,42 @@ import {
 } from "recharts";
 
 class RadarCharts extends PureComponent {
-  customTick = ({ payload, x, y, textAnchor, stroke, radius }) => {
-    return (
-      <g className="recharts-layer recharts-polar-angle-axis-tick">
-        <text
-          radius={radius}
-          stroke={stroke}
-          x={x}
-          y={y}
-          className="recharts-text recharts-polar-angle-axis-tick-value"
-          textAnchor={textAnchor}
-        >
-          <tspan
-            x={x}
-            dy="0em"
-            style={{
-              fontSize: "0.8rem",
-              fill: "white",
-            }}
-          >
-            {"hello"}
-            {/* {this.props.data.performanceData.map((x) => x.kind)} */}
-            {/* {`${payload.value}`} */}
-          </tspan>
-        </text>
-      </g>
-    );
+  customTick = (props) => {
+    const { x, y, textAnchor, stroke, radius } = props;
+
+    let performanceKindArray = [];
+    let performanceKind = this.props.data.kind;
+    for (let k in performanceKind) {
+      performanceKindArray.push([k, performanceKind[k]]);
+    }
+
+    for (let i = 0; i < performanceKindArray.length; i++) {
+      if (props.index === i) {
+        return (
+          <g className="recharts-layer recharts-polar-angle-axis-tick">
+            <text
+              radius={radius}
+              stroke={stroke}
+              x={x}
+              y={y}
+              className="recharts-text recharts-polar-angle-axis-tick-value"
+              textAnchor={textAnchor}
+            >
+              <tspan
+                x={x}
+                dy="0em"
+                style={{
+                  fontSize: "0.8rem",
+                  fill: "white",
+                }}
+              >
+                {performanceKindArray[i][1]}
+              </tspan>
+            </text>
+          </g>
+        );
+      }
+    }
   };
 
   render() {
@@ -49,10 +59,9 @@ class RadarCharts extends PureComponent {
           >
             <PolarGrid
               gridType="polygon"
-              polarRadius={[10, 20, 40, 60, 80]}
+              polarRadius={[10, 20, 40, 60, 80, 100]}
               stroke="#fff"
               radialLines={false}
-              dataKey={"value"}
             />
             <PolarAngleAxis tick={this.customTick} />
 
