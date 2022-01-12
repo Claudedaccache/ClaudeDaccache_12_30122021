@@ -9,11 +9,22 @@ import {
 import styles from "./RadialChart.module.css";
 
 class RadialCharts extends PureComponent {
+
+    /**
+   *  Transform score in data to an array.
+   *  @param {object} props data.
+   *  @returns {Array} array that includes the score value.
+   */
   scoreValueInArray = (props) => {
     let scoreArray = [];
     scoreArray.push(`${props.data}`);
     return scoreArray;
   };
+
+    /**
+   *  display customed legend.
+   *  @returns {string} chart title.
+   */
 
   customLegend = () => {
     return (
@@ -27,6 +38,11 @@ class RadialCharts extends PureComponent {
   };
 
   render() {
+       /**
+   *  Get score value in percentage(/100).
+   *  @param {string} x score value (/1).
+   *  @returns {number} score value /100.
+   */
     let getFullValue = (x) => {
       return x * 100;
     };

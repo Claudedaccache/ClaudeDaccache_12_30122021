@@ -1,17 +1,24 @@
 import React, { PureComponent } from "react";
+import CustomCursor from "./CustomCursor"
 import styles from "./SimpleChart.module.css";
 import {
   LineChart,
   Line,
-  Rectangle,
   XAxis,
   Tooltip,
   Legend,
-  Area,
   ResponsiveContainer,
 } from "recharts";
 
 class SimpleCharts extends PureComponent {
+  /**
+   *  Display custom tooltip content according to active position.
+   *  @param {boolean} active status.
+   *  @param {object} payload chart data.
+   *  @returns {string} active point values.
+   *  @returns {null} if not active or no payload.
+   */
+
   customTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
@@ -24,24 +31,16 @@ class SimpleCharts extends PureComponent {
     return null;
   };
 
-  // customCursor = (props) => {
-  // console.log(props);
-  // const { points, width, height, stroke } = props;
-  // const { x, y } = points[0];
-  // console.log(props);
 
-  // return (
-  //   <Rectangle
-  //     fill="black"
-  //     stroke="black"
-  //     x={x}
-  //     y={y}
-  //     width={width}
-  //     height={height}
-  //   />
-  // );
-  // };
 
+
+
+  
+  /**
+   *  Display custom tick content in the Xaxis.
+   *  @param {object} props chart data.
+   *  @returns {string} Xaxis customed ticks (week days).
+   */
   customTicks = (props) => {
     const { x, y, stroke, orientation, width, height, type, textAnchor } =
       props;
@@ -67,7 +66,7 @@ class SimpleCharts extends PureComponent {
                 style={{
                   fontSize: "0.8rem",
                   fill: "white",
-                  opacity: "0.6",
+                  opacity: "0.7",
                 }}
               >
                 {days[i]}
@@ -78,6 +77,11 @@ class SimpleCharts extends PureComponent {
       }
     }
   };
+
+  /**
+   *  display customed legend.
+   *  @returns {string} chart title.
+   */
 
   customLegend = () => {
     return (
@@ -113,12 +117,14 @@ class SimpleCharts extends PureComponent {
               dataKey="day"
               tickLine={false}
               axisLine={false}
-              // tick={{ fill: "white", opacity: "0.6" }}
               tick={this.customTicks}
+              scale="point"
+             
             />
             <Tooltip
+            allowEscapeViewBox={{x: true, y: true }}
               content={this.customTooltip}
-              //  cursor={this.customCursor}
+               cursor={<CustomCursor />}
             />
             <Legend
               iconSize={0}

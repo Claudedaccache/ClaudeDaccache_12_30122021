@@ -10,46 +10,16 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-
-// const data = [
-//   {
-//     day: "2020-07-01",
-//     kilogram: 70,
-//     calories: 240,
-//   },
-//   {
-//     day: "2020-07-02",
-//     kilogram: 69,
-//     calories: 220,
-//   },
-//   {
-//     day: "2020-07-03",
-//     kilogram: 70,
-//     calories: 280,
-//   },
-//   {
-//     day: "2020-07-04",
-//     kilogram: 70,
-//     calories: 500,
-//   },
-//   {
-//     day: "2020-07-05",
-//     kilogram: 69,
-//     calories: 160,
-//   },
-//   {
-//     day: "2020-07-06",
-//     kilogram: 69,
-//     calories: 162,
-//   },
-//   {
-//     day: "2020-07-07",
-//     kilogram: 69,
-//     calories: 390,
-//   },
-// ];
+import { type } from "@testing-library/user-event/dist/type";
 
 class ActivityBarChart extends PureComponent {
+  /**
+   *  Display tooltip content according to active position.
+   *  @param {boolean} active status.
+   *  @param {object} payload chart data.
+   *  @returns {string} active point values.
+   */
+
   CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
@@ -63,6 +33,11 @@ class ActivityBarChart extends PureComponent {
     return null;
   };
 
+  /**
+   *  Display a custom legend content.
+   *  @param {boolean} props data.
+   *  @returns {string} data displayed identifier.
+   */
   customLegend = (props) => {
     let weightColor = props.weightColor;
     let caloriesColor = props.caloriesColor;
@@ -110,7 +85,11 @@ class ActivityBarChart extends PureComponent {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
-            <XAxis tickLine={false} tickCount={10} />
+            <XAxis
+              tickLine={false}
+              allowDecimals={false}
+              tickFormatter={(tick) => tick + 1}
+            />
             <YAxis
               orientation="right"
               axisLine={false}

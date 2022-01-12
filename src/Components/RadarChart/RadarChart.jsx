@@ -9,6 +9,12 @@ import {
 } from "recharts";
 
 class RadarCharts extends PureComponent {
+  /**
+   *  Display custom ticks.
+   *  @param {object} props chart data.
+   *  @returns {string} ticks names.
+   */
+
   customTick = (props) => {
     const { x, y, textAnchor, stroke, radius } = props;
 
@@ -54,7 +60,7 @@ class RadarCharts extends PureComponent {
           <RadarChart
             cx="50%"
             cy="50%"
-            outerRadius="70%"
+            outerRadius="80%"
             data={this.props.data.performanceData}
           >
             <PolarGrid
