@@ -4,12 +4,15 @@ import RadialCharts from "../Components/RadialChart/RadialChart";
 import RadarCharts from "../Components/RadarChart/RadarChart";
 import SimpleCharts from "../Components/SimpleChart/SimpleChart";
 
+/**
+ * class that includes all the charts
+ */
 class Charts extends React.Component {
   render() {
     let activitySessions = this.props.chartsData.activitySessions;
-    let todayScore = this.props.chartsData.todayScore
-    let performanceData = this.props.chartsData
-    let averageSessions = this.props.chartsData.averageSessions
+    let todayScore = this.props.chartsData.todayScore;
+    let performanceData = this.props.chartsData;
+    let averageSessions = this.props.chartsData.averageSessions;
 
     return (
       <div className=" allChartsContent">
@@ -24,15 +27,15 @@ class Charts extends React.Component {
         <div className="allLowerCharts ">
           <div className="chartItem">
             {" "}
-            <SimpleCharts data ={averageSessions} />
+            <SimpleCharts data={averageSessions} />
           </div>
           <div className="chartItem">
             {" "}
-            <RadarCharts data={performanceData}/>
+            <RadarCharts data={performanceData} />
           </div>
           <div className="chartItem">
             {" "}
-            <RadialCharts data = {todayScore}/>
+            <RadialCharts data={todayScore} />
           </div>
         </div>
       </div>

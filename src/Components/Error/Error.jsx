@@ -1,7 +1,10 @@
 import React from "react";
-import {NavLink} from "react-router-dom"
-import styles from "../Error/Error.module.css" 
+import { NavLink } from "react-router-dom";
+import styles from "../Error/Error.module.css";
 
+/**
+ * class to display the error page with the 404 code
+ */
 class ErrorMessage extends React.Component {
   render() {
     return (

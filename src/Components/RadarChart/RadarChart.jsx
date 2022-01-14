@@ -8,6 +8,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+/**
+ * class to display the radar chart with its content according to the data received
+ */
 class RadarCharts extends PureComponent {
   /**
    *  Display custom ticks.

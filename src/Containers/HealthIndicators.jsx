@@ -5,6 +5,10 @@ import MeatIcon from "../Images/MeatIcon";
 import AppleIcon from "../Images/AppleIcon";
 import HamburgerIcon from "../Images/HamburgerIcon";
 
+
+/**
+ * class that includes all the health Indicators
+ */
 class HealthIndicators extends React.Component {
   render() {
     let indicatorData = this.props.userHealthData.keyData;

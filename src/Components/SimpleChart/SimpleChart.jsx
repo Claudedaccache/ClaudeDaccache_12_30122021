@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import CustomCursor from "./CustomCursor"
+import CustomCursor from "./CustomCursor";
 import styles from "./SimpleChart.module.css";
 import {
   LineChart,
@@ -10,6 +10,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+/**
+ * class to display the simple Line chart with its content according to the data received
+
+ */
 class SimpleCharts extends PureComponent {
   /**
    *  Display custom tooltip content according to active position.
@@ -31,11 +35,6 @@ class SimpleCharts extends PureComponent {
     return null;
   };
 
-
-
-
-
-  
   /**
    *  Display custom tick content in the Xaxis.
    *  @param {object} props chart data.
@@ -108,7 +107,7 @@ class SimpleCharts extends PureComponent {
           >
             <defs>
               <linearGradient id="linear">
-                <stop offset="0%" stopColor="white" stopOpacity={0.2} />
+                <stop offset="0%" stopColor="white" stopOpacity={0.3} />
                 <stop offset="50%" stopColor="white" stopOpacity={0.7} />
                 <stop offset="100%" stopColor="white" stopOpacity={1} />
               </linearGradient>
@@ -119,12 +118,11 @@ class SimpleCharts extends PureComponent {
               axisLine={false}
               tick={this.customTicks}
               scale="point"
-             
             />
             <Tooltip
-            allowEscapeViewBox={{x: true, y: true }}
+              allowEscapeViewBox={{ x: true, y: true }}
               content={this.customTooltip}
-               cursor={<CustomCursor />}
+              cursor={<CustomCursor />}
             />
             <Legend
               iconSize={0}

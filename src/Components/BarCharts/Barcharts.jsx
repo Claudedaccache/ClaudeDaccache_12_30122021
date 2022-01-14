@@ -10,8 +10,11 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { type } from "@testing-library/user-event/dist/type";
 
+
+/**
+ * class to display the activity chart with its content according to the data received
+ */
 class ActivityBarChart extends PureComponent {
   /**
    *  Display tooltip content according to active position.

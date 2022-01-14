@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "../src/Containers/Layout";
 import ErrorMessage from "./Components/Error/Error";
 import { Routes, Route } from "react-router-dom";
-import Home from "../src/Pages/Home";
+import UserHome from "../src/Pages/Home";
 
 class App extends React.Component {
   constructor() {
@@ -29,7 +29,7 @@ class App extends React.Component {
         <Routes>
           <Route
               path={"/user/:id"}
-              element={<Home userData={this.state.userData} />}
+              element={<UserHome userData={this.state.userData} />}
           ></Route>
             <Route
               path="*"
