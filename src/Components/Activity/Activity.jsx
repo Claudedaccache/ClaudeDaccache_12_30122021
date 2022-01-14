@@ -1,8 +1,12 @@
 import React from "react";
 import styles from "../Activity/Activity.module.css";
+import PropTypes from "prop-types";
+
 
 /**
- * class to display the icons in the sideBar
+ * Component for showing details of the activities icons.
+ * @component
+ * 
  */
 
 class Activity extends React.Component {
@@ -15,5 +19,9 @@ class Activity extends React.Component {
     );
   }
 }
+
+Activity.propTypes = {
+  icon: PropTypes.object,
+};
 
 export default Activity;

@@ -7,8 +7,11 @@ import HamburgerIcon from "../Images/HamburgerIcon";
 
 
 /**
- * class that includes all the health Indicators
+ * Component for showing  all the health Indicators
+ * @component
+ * 
  */
+
 class HealthIndicators extends React.Component {
   render() {
     let indicatorData = this.props.userHealthData.keyData;

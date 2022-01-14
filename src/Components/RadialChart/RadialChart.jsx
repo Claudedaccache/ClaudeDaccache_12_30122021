@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import {
   RadialBarChart,
   RadialBar,
@@ -9,8 +10,9 @@ import {
 import styles from "./RadialChart.module.css";
 
 /**
- * class to display the radial chart with its content according to the data received
-
+ * Component for showing the radial chart with its content according to the data received
+ * @component
+ *
  */
 
 class RadialCharts extends PureComponent {
@@ -101,5 +103,10 @@ class RadialCharts extends PureComponent {
     );
   }
 }
+
+RadialCharts.propTypes = {
+  data: PropTypes.number,
+};
+
 
 export default RadialCharts;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Rectangle } from "recharts";
+import PropTypes from "prop-types";
 
 /**
  * Created the rectangle component according to the chart props to be displayed after the active point.
@@ -10,6 +11,7 @@ import { Rectangle } from "recharts";
 const CustomCursor = (props) => {
   const { points, width, height } = props;
   const { x, y } = points[0];
+
   return (
     <Rectangle
       fill="#ad0606"
@@ -22,5 +24,13 @@ const CustomCursor = (props) => {
     />
   );
 };
+
+CustomCursor.propTypes = {
+  points: PropTypes.array,
+  width: PropTypes.number,
+  height: PropTypes.number,
+
+};
+
 
 export default CustomCursor;

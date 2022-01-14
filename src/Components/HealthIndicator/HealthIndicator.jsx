@@ -1,9 +1,13 @@
 import React from "react";
 import styles from "../HealthIndicator/HealthIndicator.module.css";
+import PropTypes from "prop-types";
 
 /**
- * class to display the health indicators with icons and value
+ * Component for showing the health indicators with icons and value
+ * @component
+ *
  */
+
 class HealthIndicator extends React.Component {
   render() {
     return (
@@ -24,5 +28,12 @@ class HealthIndicator extends React.Component {
     );
   }
 }
+
+HealthIndicator.propTypes = {
+  color: PropTypes.string,
+  indicatorNumber: PropTypes.string,
+  indicatorType: PropTypes.string,
+};
+
 
 export default HealthIndicator;

@@ -3,8 +3,11 @@ import Logo from "../Logo/Logo";
 import styles from "../Header/Header.module.css";
 
 /**
- * class to display the header with its nav contents
+ * Component for showing the header with its nav contents
+ * @component
+ *
  */
+
 class Header extends React.Component {
   render() {
     return (

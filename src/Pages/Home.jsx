@@ -23,7 +23,7 @@ class UserHome extends React.Component {
    * fetch an api to retrieve the users data and display them on the page
    */
   async componentDidMount() {
-    const response = await fetch("http://myjson.dit.upm.es/api/bins/2mxj");
+    const response = await fetch(process.env.REACT_APP_API_DATA_SRC);
     const data = await response.json();
     const params = this.props.params.id;
     this.setState({
@@ -58,7 +58,7 @@ class UserHome extends React.Component {
           <div className="BodyContentWithoutSideBar">
             {" "}
             <Greeting userName={this.state.userData} />
-            <div className="container-fluid allBobyContent">
+            <div className="allBobyContent">
               <Charts chartsData={this.state.userData} />
               <div className="healthIndicationMainContainer">
                 <HealthIndicators userHealthData={this.state.userData} />

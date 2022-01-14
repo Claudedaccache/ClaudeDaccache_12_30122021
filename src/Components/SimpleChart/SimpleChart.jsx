@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import CustomCursor from "./CustomCursor";
 import styles from "./SimpleChart.module.css";
+import PropTypes from "prop-types";
 import {
   LineChart,
   Line,
@@ -11,9 +12,11 @@ import {
 } from "recharts";
 
 /**
- * class to display the simple Line chart with its content according to the data received
-
+ * Component for showing the simple Line chart with its content according to the data received
+ * @component
+ *
  */
+
 class SimpleCharts extends PureComponent {
   /**
    *  Display custom tooltip content according to active position.
@@ -43,6 +46,7 @@ class SimpleCharts extends PureComponent {
   customTicks = (props) => {
     const { x, y, stroke, orientation, width, height, type, textAnchor } =
       props;
+
     const days = ["L", "M", "M", "J", "V", "S", "D"];
     for (let i = 0; i < days.length; i++) {
       if (props.index == i) {
@@ -117,24 +121,21 @@ class SimpleCharts extends PureComponent {
               tickLine={false}
               axisLine={false}
               tick={this.customTicks}
-              scale="point"
+              // scale="point"
             />
-            <Tooltip
-              allowEscapeViewBox={{ x: true, y: true }}
-              content={this.customTooltip}
-              cursor={<CustomCursor />}
-            />
+            <Tooltip content={this.customTooltip} cursor={<CustomCursor />} />
             <Legend
               iconSize={0}
               verticalAlign="insideTopLeft"
               content={this.customLegend}
             />
             <Line
-              type="monotone"
+              type="basis"
               dataKey="sessionLength"
               strokeWidth={3}
               stroke="url(#linear)"
               dot={false}
+              // activeDot={false}
             />
           </LineChart>
         </ResponsiveContainer>
@@ -142,5 +143,17 @@ class SimpleCharts extends PureComponent {
     );
   }
 }
+
+CustomCursor.propTypes = {
+  data: PropTypes.array,
+  x: PropTypes.number,
+  y: PropTypes.number,
+  stroke: PropTypes.string,
+  orientation: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  type: PropTypes.string,
+  textAnchor: PropTypes.string,
+};
 
 export default SimpleCharts;

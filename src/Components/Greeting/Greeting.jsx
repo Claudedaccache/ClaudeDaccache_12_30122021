@@ -1,9 +1,14 @@
 import React from "react";
 import styles from "../Greeting/Greeting.module.css";
+import PropTypes from "prop-types";
+
 
 /**
- * class to display the greeting message with the user name
+ * Component for showing the greeting message with the user name
+ * @component
+ *
  */
+
 class Greeting extends React.Component {
   render() {
     let userFirstName = this.props.userName.userInfos.firstName;
@@ -19,5 +24,10 @@ class Greeting extends React.Component {
     );
   }
 }
+
+Greeting.propTypes = {
+  userFirstName: PropTypes.string,
+};
+
 
 export default Greeting;

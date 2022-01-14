@@ -7,8 +7,11 @@ import BikingActivity from "../../Images/BikingActivity";
 import MusculationActivity from "../../Images/MusculationActivity";
 
 /**
- * class to display the sideBar with its contents(activity icons and rights text)
+ * Component for showing the sideBar with its contents(activity icons and rights text)
+ * @component
+ *
  */
+
 class SideBar extends React.Component {
   render() {
     return (

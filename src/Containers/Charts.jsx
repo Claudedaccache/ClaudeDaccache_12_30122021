@@ -5,8 +5,11 @@ import RadarCharts from "../Components/RadarChart/RadarChart";
 import SimpleCharts from "../Components/SimpleChart/SimpleChart";
 
 /**
- * class that includes all the charts
+ * Component for showing all the charts
+ * @component
+ * 
  */
+
 class Charts extends React.Component {
   render() {
     let activitySessions = this.props.chartsData.activitySessions;

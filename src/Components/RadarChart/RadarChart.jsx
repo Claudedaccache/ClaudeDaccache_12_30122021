@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import styles from "./RadarCharts.module.css";
+import PropTypes from "prop-types";
 import {
   Radar,
   RadarChart,
@@ -9,8 +10,11 @@ import {
 } from "recharts";
 
 /**
- * class to display the radar chart with its content according to the data received
+ * Component for showing the radar chart with its content according to the data received
+ * @component
+ *
  */
+
 class RadarCharts extends PureComponent {
   /**
    *  Display custom ticks.
@@ -63,7 +67,7 @@ class RadarCharts extends PureComponent {
           <RadarChart
             cx="50%"
             cy="50%"
-            outerRadius="80%"
+            outerRadius="65%"
             data={this.props.data.performanceData}
           >
             <PolarGrid
@@ -86,5 +90,11 @@ class RadarCharts extends PureComponent {
     );
   }
 }
+
+RadarCharts.propTypes = {
+  performanceData: PropTypes.object,
+  performanceKind: PropTypes.object,
+
+};
 
 export default RadarCharts;

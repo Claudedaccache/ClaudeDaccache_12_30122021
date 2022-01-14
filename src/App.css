@@ -16,9 +16,9 @@ a {
 .BodyContentWithoutSideBar {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
   height: 100%;
-  margin: 0 0 4rem 0rem;
+  margin: 0 0 3rem 0rem;
 }
 .BodyContentWithSideBar {
   display: flex;
@@ -30,13 +30,14 @@ a {
 .allBobyContent {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  margin: 0 auto;
 }
 
 .allChartsContent {
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: 100%;
   height: 100%;
 }
 
@@ -48,16 +49,16 @@ a {
 }
 .chartItem {
   height: 100%;
-  width: 30%;
+  width: 32%;
 }
 
 .healthIndicationMainContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-left: 2rem;
-  width: 25%;
+  margin-top: 2rem;
+  width: 100%;
 }
 
 .mainLoadingMessage {
@@ -73,6 +74,21 @@ a {
 
 @media screen and (min-width: 1400px) {
   .BodyContentWithoutSideBar {
-    margin: 2rem 0 4rem 4rem;
+    width: 100%;
+    margin: 2rem 1rem 4rem 3rem;
+  }
+  .allBobyContent {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .healthIndicationMainContainer {
+    flex-direction: column;
+    width: 25%;
+    margin-top: 0rem;
+    margin-left: 2rem;
+  }
+  .chartItem {
+    width: 30%;
   }
 }

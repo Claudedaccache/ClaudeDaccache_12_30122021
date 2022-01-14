@@ -2,7 +2,9 @@ import React from "react";
 import styles from "./Logo.module.css";
 
 /**
- * class to display the logo
+ * Component for showing the logo
+ * @component
+ *
  */
 
 class Logo extends React.Component {

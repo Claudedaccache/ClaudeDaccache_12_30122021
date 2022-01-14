@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import styles from "./BarCharts.module.css";
+import PropTypes from "prop-types";
 import {
   BarChart,
   Bar,
@@ -11,10 +12,12 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-
 /**
- * class to display the activity chart with its content according to the data received
+ * Component for showing the activity chart with its content according to the data received
+ * @component
+ *
  */
+
 class ActivityBarChart extends PureComponent {
   /**
    *  Display tooltip content according to active position.
@@ -102,7 +105,7 @@ class ActivityBarChart extends PureComponent {
             <Tooltip content={this.CustomTooltip} />
             <Legend
               verticalAlign="top"
-              content={this.customLegend(this.props)}
+              content={() => this.customLegend(this.props)}
             />
 
             <Bar
@@ -123,5 +126,20 @@ class ActivityBarChart extends PureComponent {
     );
   }
 }
+
+ActivityBarChart.propTypes = {
+  /**
+   * chart's data
+   */
+  data: PropTypes.array,
+  /**
+   * color of the weight bar
+   */
+  weightColor: PropTypes.string,
+  /**
+   * color of the calories bar
+   */
+  caloriesColor: PropTypes.string,
+};
 
 export default ActivityBarChart;
