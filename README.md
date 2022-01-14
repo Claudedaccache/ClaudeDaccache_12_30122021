@@ -7,8 +7,8 @@
 
  2. Project
   2.1 Prerequisites
-  NodeJS
-  Yarn
+  - NodeJS
+  - Yarn
  
  2.2 Launching the project
   2.2.1 Backend side
