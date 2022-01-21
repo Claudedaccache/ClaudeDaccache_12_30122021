@@ -5,6 +5,7 @@ import Charts from "../Containers/Charts";
 import HealthIndicators from "../Containers/HealthIndicators";
 import withRouter from "../Components/Wrapper/Wrapper";
 import ErrorMessage from "../Components/Error/Error";
+import usersData from "../FetchingData";
 
 /**
  * class to display the user's home information and data according to the user's id
@@ -15,40 +16,39 @@ class UserHome extends React.Component {
     super(props);
     this.state = {
       loading: true,
-      userData: null,
+      userInfo: null,
+      userActivity: null,
+      userAverageSessions: null,
+      userPerformance: null,
+      userPerformanceKind: null,
     };
   }
 
   /**
-   * fetch an api to retrieve the users data and display them on the page
+   * fetch data from api to retrieve users data and display them on the page
    */
   async componentDidMount() {
-    const response = await fetch(process.env.REACT_APP_API_DATA_SRC);
-    const data = await response.json();
     const params = this.props.params.id;
+    let response = usersData(params);
+    const data = await response;
     this.setState({
-      userData: this.selectedResidence(data, params),
       loading: false,
+      userInfo: data.info,
+      userActivity: data.activity,
+      userAverageSessions: data.averageSession,
+      userPerformance: data.performance,
+      userPerformanceKind: data.performanceKind,
     });
   }
 
-  /**
-   * fonction the filter the users data and only return the user that has an id equal the the param's id
-   * @param {object} users all users data
-   * @param {string} params id retrieved from the params
-   * @returns user with the id that is equal to the param's id / null
-   */
-  selectedResidence(users, params) {
-    for (let i = 0; i < users.length; i++) {
-      if (users[i].id == params) {
-        return users[i];
-      }
-    }
-    return null;
-  }
-
   render() {
-    if (this.state.userData !== null) {
+    if (
+      this.state.userInfo !== null &&
+      this.state.userActivity !== null &&
+      this.state.userAverageSessions !== null &&
+      this.state.userPerformance !== null &&
+      this.state.userPerformanceKind !== null
+    ) {
       return (
         <div className="BodyContentWithSideBar">
           <div>
@@ -57,11 +57,17 @@ class UserHome extends React.Component {
           </div>
           <div className="BodyContentWithoutSideBar">
             {" "}
-            <Greeting userName={this.state.userData} />
+            <Greeting userName={this.state.userInfo} />
             <div className="allBobyContent">
-              <Charts chartsData={this.state.userData} />
+              <Charts
+                userScore={this.state.userInfo}
+                UserActivity={this.state.userActivity}
+                userAverageSessions={this.state.userAverageSessions}
+                userPerformance={this.state.userPerformance}
+                userPerformanceKind={this.state.userPerformanceKind}
+              />
               <div className="healthIndicationMainContainer">
-                <HealthIndicators userHealthData={this.state.userData} />
+                <HealthIndicators userHealthData={this.state.userInfo} />
               </div>
             </div>
           </div>

@@ -25,39 +25,55 @@ class RadarCharts extends PureComponent {
   customTick = (props) => {
     const { x, y, textAnchor, stroke, radius } = props;
 
-    let performanceKindArray = [];
-    let performanceKind = this.props.data.kind;
-    for (let k in performanceKind) {
-      performanceKindArray.push([k, performanceKind[k]]);
+    let i = props.index;
+    switch (i) {
+      case 0:
+        i = "Intensité";
+        break;
+      case 1:
+        i = "Vitesse";
+        break;
+      case 2:
+        i = "Force";
+        break;
+      case 3:
+        i = "Endurance";
+        break;
+      case 4:
+        i = "Energie";
+        break;
+      case 5:
+        i = "Cardio";
+        break;
+      default:
+        console.log("no label");
     }
 
-    for (let i = 0; i < performanceKindArray.length; i++) {
-      if (props.index === i) {
-        return (
-          <g className="recharts-layer recharts-polar-angle-axis-tick">
-            <text
-              radius={radius}
-              stroke={stroke}
-              x={x}
-              y={y}
-              className="recharts-text recharts-polar-angle-axis-tick-value"
-              textAnchor={textAnchor}
-            >
-              <tspan
-                x={x}
-                dy="0em"
-                style={{
-                  fontSize: "0.8rem",
-                  fill: "white",
-                }}
-              >
-                {performanceKindArray[i][1]}
-              </tspan>
-            </text>
-          </g>
-        );
-      }
-    }
+    return (
+      <g className="recharts-layer recharts-polar-angle-axis-tick">
+        <text
+          radius={radius}
+          stroke={stroke}
+          x={x}
+          y={y}
+          className="recharts-text recharts-polar-angle-axis-tick-value"
+          textAnchor={textAnchor}
+        >
+          <tspan
+            x={x}
+            dy="0em"
+            style={{
+              fontSize: "0.8rem",
+              fill: "white",
+            }}
+          >
+            {i}
+          </tspan>
+        </text>
+      </g>
+    );
+    // }
+    // }
   };
 
   render() {
@@ -67,8 +83,8 @@ class RadarCharts extends PureComponent {
           <RadarChart
             cx="50%"
             cy="50%"
-            outerRadius="65%"
-            data={this.props.data.performanceData}
+            outerRadius="75%"
+            data={this.props.data}
           >
             <PolarGrid
               gridType="polygon"
@@ -94,7 +110,6 @@ class RadarCharts extends PureComponent {
 RadarCharts.propTypes = {
   performanceData: PropTypes.object,
   performanceKind: PropTypes.object,
-
 };
 
 export default RadarCharts;

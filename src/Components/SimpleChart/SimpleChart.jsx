@@ -122,6 +122,7 @@ class SimpleCharts extends PureComponent {
               axisLine={false}
               tick={this.customTicks}
               // scale="point"
+              allowDataOverflow={true}
             />
             <Tooltip content={this.customTooltip} cursor={<CustomCursor />} />
             <Legend
@@ -130,12 +131,11 @@ class SimpleCharts extends PureComponent {
               content={this.customLegend}
             />
             <Line
-              type="basis"
+              type="natural"
               dataKey="sessionLength"
               strokeWidth={3}
               stroke="url(#linear)"
               dot={false}
-              // activeDot={false}
             />
           </LineChart>
         </ResponsiveContainer>

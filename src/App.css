@@ -16,7 +16,7 @@ a {
 .BodyContentWithoutSideBar {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 83%;
   height: 100%;
   margin: 0 0 3rem 0rem;
 }
