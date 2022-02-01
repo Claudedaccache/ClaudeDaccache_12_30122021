@@ -11,11 +11,10 @@ import PropTypes from "prop-types";
 
 class Greeting extends React.Component {
   render() {
-    let userFirstName = this.props.userName.userInfos.firstName;
     return (
       <div className={styles.greetingContainer}>
         <p className={styles.userGreeting}>
-          Bonjour <span className={styles.userName}>{userFirstName}</span>
+          Bonjour <span className={styles.userName}>{this.props.userName}</span>
         </p>
         <p className={styles.userEncouragingMessage}>
           Félicitation ! Vous avez explosé vos objectifs hier 👏

@@ -31,14 +31,22 @@ class UserHome extends React.Component {
     const params = this.props.params.id;
     let response = usersData(params);
     const data = await response;
-    this.setState({
-      loading: false,
-      userInfo: data.info,
-      userActivity: data.activity,
-      userAverageSessions: data.averageSession,
-      userPerformance: data.performance,
-      userPerformanceKind: data.performanceKind,
-    });
+    console.log(data);
+    if (data != null) {
+      this.setState({
+        loading: false,
+        userInfo: data.info,
+        userActivity: data.activity,
+        userAverageSessions: data.averageSession,
+        userPerformance: data.performance,
+        userPerformanceKind: data.performanceKind,
+      });
+    } else {
+      this.setState({
+        loading: false,
+        error: true,
+      });
+    }
   }
 
   render() {
@@ -57,10 +65,10 @@ class UserHome extends React.Component {
           </div>
           <div className="BodyContentWithoutSideBar">
             {" "}
-            <Greeting userName={this.state.userInfo} />
+            <Greeting userName={this.state.userInfo.userInfos.firstName} />
             <div className="allBobyContent">
               <Charts
-                userScore={this.state.userInfo}
+                userScore={this.state.userInfo.score}
                 UserActivity={this.state.userActivity}
                 userAverageSessions={this.state.userAverageSessions}
                 userPerformance={this.state.userPerformance}

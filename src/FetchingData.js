@@ -29,18 +29,20 @@ async function usersData(params) {
     }
   };
 
-  const data = await Promise.all([
+  const values = await Promise.all([
     fetchedData(params, ""),
     fetchedData(params, "activity"),
     fetchedData(params, "average-sessions"),
     fetchedData(params, "performance"),
-  ]).then((values) => {
+  ]);
+  const hasUndefined = values.findIndex((elt) => elt === undefined);
+  if (hasUndefined === -1) {
     const data = Object.assign({}, values);
-    const userInfo = data[0];
-    const userActivity = data[1].sessions;
-    const userAverageSessions = data[2].sessions;
-    const userPerformance = data[3].data;
-    const userPerformanceKind = data[3].kind;
+    const userInfo = data[0] ? formatDataInfo(data[0]) : null;
+    const userActivity = data[1].sessions ? data[1].sessions : null;
+    const userAverageSessions = data[2].sessions ? data[2].sessions : null;
+    const userPerformance = data[3].data ? data[3].data : null;
+    const userPerformanceKind = data[3].kind ? data[3].kind : null;
     let userData = createUserObject(
       userInfo,
       userActivity,
@@ -49,12 +51,11 @@ async function usersData(params) {
       userPerformanceKind
     );
     return userData;
-  });
-  if (data) {
-    return data;
-  } else {
-    return null;
   }
+  return null;
 }
-
+function formatDataInfo(data) {
+  data.score = data.score ?? data.todayScore;
+  return data;
+}
 export default usersData;

@@ -12,18 +12,12 @@ import SimpleCharts from "../Components/SimpleChart/SimpleChart";
 
 class Charts extends React.Component {
   render() {
-    let todayScore = this.props.userScore.todayScore ?  this.props.userScore.todayScore :  this.props.userScore.score;
-    let activitySessions = this.props.UserActivity;
-    let averageSessions = this.props.userAverageSessions
-    let performanceData = this.props.userPerformance;
-    let userPerformanceKind = this.props.userPerformanceKind
-
-    return (
+      return (
       <div className=" allChartsContent">
         <div className="BarChart">
           {" "}
           <ActivityBarChart
-            data={activitySessions}
+            data={this.props.UserActivity}
             caloriesColor="#E60000"
             weightColor="#282D30"
           />
@@ -31,15 +25,15 @@ class Charts extends React.Component {
         <div className="allLowerCharts ">
           <div className="chartItem">
             {" "}
-            <SimpleCharts data={averageSessions} />
+            <SimpleCharts data={this.props.userAverageSessions} />
           </div>
           <div className="chartItem">
             {" "}
-            <RadarCharts data={performanceData} kind={userPerformanceKind} />
+            <RadarCharts data={this.props.userPerformance} kind={this.props.userPerformanceKind} />
           </div>
           <div className="chartItem">
             {" "}
-            <RadialCharts data={todayScore} />
+            <RadialCharts data={this.props.userScore} />
           </div>
         </div>
        </div>
