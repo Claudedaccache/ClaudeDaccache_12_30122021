@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "../src/Containers/Layout";
 import ErrorMessage from "./Components/Error/Error";
 import { Routes, Route } from "react-router-dom";
-import UserHome from "../src/Pages/Home";
+import UserHome from "./Pages/UserHome";
 
 class App extends React.Component {
   render() {
