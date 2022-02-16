@@ -13,7 +13,6 @@ class Header extends React.Component {
     return (
       <div className={styles.contentContainer}>
         <div>
-          {" "}
           <Logo color="#E60000" />
         </div>
         <div className={styles.navItems}>

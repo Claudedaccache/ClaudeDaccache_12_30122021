@@ -10,14 +10,8 @@ class App extends React.Component {
     return (
       <Layout>
         <Routes>
-          <Route
-              path={"/user/:id"}
-              element={<UserHome  />}
-          ></Route>
-            <Route
-              path="*"
-              element={<ErrorMessage />}
-          ></Route>
+          <Route path={"/user/:id"} element={<UserHome />}></Route>
+          <Route path="*" element={<ErrorMessage />}></Route>
         </Routes>
       </Layout>
     );

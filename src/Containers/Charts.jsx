@@ -15,7 +15,6 @@ class Charts extends React.Component {
       return (
       <div className=" allChartsContent">
         <div className="BarChart">
-          {" "}
           <ActivityBarChart
             data={this.props.UserActivity}
             caloriesColor="#E60000"
@@ -24,15 +23,12 @@ class Charts extends React.Component {
         </div>
         <div className="allLowerCharts ">
           <div className="chartItem">
-            {" "}
             <SimpleCharts data={this.props.userAverageSessions} />
           </div>
           <div className="chartItem">
-            {" "}
             <RadarCharts data={this.props.userPerformance} kind={this.props.userPerformanceKind} />
           </div>
           <div className="chartItem">
-            {" "}
             <RadialCharts data={this.props.userScore} />
           </div>
         </div>

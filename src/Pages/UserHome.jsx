@@ -31,7 +31,6 @@ class UserHome extends React.Component {
     const params = this.props.params.id;
     let response = usersData(params);
     const data = await response;
-    console.log(data);
     if (data != null) {
       this.setState({
         loading: false,
@@ -60,11 +59,9 @@ class UserHome extends React.Component {
       return (
         <div className="BodyContentWithSideBar">
           <div>
-            {" "}
             <SideBar />
           </div>
           <div className="BodyContentWithoutSideBar">
-            {" "}
             <Greeting userName={this.state.userInfo.userInfos.firstName} />
             <div className="allBobyContent">
               <Charts

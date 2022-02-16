@@ -50,12 +50,10 @@ class ActivityBarChart extends PureComponent {
     return (
       <div className={`section-title ${styles.barChartTitle}`}>
         <div>
-          {" "}
           <p className={styles.legendTitle}>{"Activité quotidienne"}</p>
         </div>
         <div className="d-flex flex-row">
           <div className="d-flex flex-row justify-content-center align-items-baseline">
-            {" "}
             <span
               className={styles.legendDot}
               style={{ backgroundColor: weightColor }}
@@ -63,7 +61,6 @@ class ActivityBarChart extends PureComponent {
             <p className={styles.legendText}>{"Poids (kg)"}</p>
           </div>
           <div className="d-flex flex-row justify-content-center align-items-baseline ">
-            {" "}
             <span
               className={styles.legendDot}
               style={{ backgroundColor: caloriesColor }}

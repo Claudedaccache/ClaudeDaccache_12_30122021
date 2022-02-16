@@ -1,3 +1,5 @@
+import users from "./Users.json";
+
 async function usersData(params) {
   const createUserObject = (
     info,
@@ -29,12 +31,23 @@ async function usersData(params) {
     }
   };
 
-  const values = await Promise.all([
-    fetchedData(params, ""),
-    fetchedData(params, "activity"),
-    fetchedData(params, "average-sessions"),
-    fetchedData(params, "performance"),
-  ]);
+  const getUser = (usersdata, userid) => {
+    let selectedUser = usersdata.find(
+      (item) => item[0].id === parseInt(userid)
+    );
+    return selectedUser ? selectedUser : [undefined];
+  };
+
+  const values =
+    process.env.REACT_APP_NODE_ENV === "1"
+      ? await Promise.all([
+          fetchedData(params, ""),
+          fetchedData(params, "activity"),
+          fetchedData(params, "average-sessions"),
+          fetchedData(params, "performance"),
+        ])
+      : getUser(users, params);
+
   const hasUndefined = values.findIndex((elt) => elt === undefined);
   if (hasUndefined === -1) {
     const data = Object.assign({}, values);

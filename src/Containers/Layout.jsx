@@ -14,7 +14,7 @@ class Layout extends React.Component {
         <div className="d-flex flex-column">
           <div>
             <Header />
-          </div>{" "}
+          </div>
           {this.props.children}
         </div>
       </div>
